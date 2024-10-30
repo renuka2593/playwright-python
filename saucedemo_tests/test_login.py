@@ -1,3 +1,6 @@
+"""
+Test suite for logging into Sauce Demo using Playwright.
+"""
 import pytest
 import re
 from playwright.sync_api import Page, expect
