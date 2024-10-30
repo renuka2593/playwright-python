@@ -9,7 +9,7 @@ playwright install
 ```
 2. Install pytest and pytest-playwright
 ```bash
-pip install pytest pytest-playwright
+pip3 install pytest pytest-playwright
 ```
 3. Run with pytest
 ```bash

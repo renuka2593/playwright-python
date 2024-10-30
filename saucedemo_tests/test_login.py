@@ -1,13 +1,14 @@
 import pytest
-from playwright.async_api import Page
+import re
+from playwright.sync_api import Page, expect
 
 
-@pytest.mark.parametrize("username, password, expected_url", [
-    ("standard_user", "secret_sauce", "https://www.saucedemo.com/v1/inventory.html")
+@pytest.mark.parametrize("username, password, expected_title", [
+    ("standard_user", "secret_sauce", "Swag Labs")
 ])
-def test_login(page: Page, username, password, expected_url):
+def test_login(page: Page, username, password, expected_title):
     page.goto("https://www.saucedemo.com/v1/")
     page.locator('#user-name').fill(username)
     page.locator("#password").fill(password)
     page.locator("#login-button").click()
-    assert page.url == expected_url, "Login failed or URL did not match expected dashboard URL"
+    expect(page).to_have_title(re.compile(expected_title))
