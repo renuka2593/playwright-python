@@ -1,15 +1,13 @@
-from playwright.sync_api import sync_playwright, Playwright
+import pytest
+from playwright.async_api import Page
 
 
-def test_login(playwright: Playwright) -> None:
-    browser = playwright.chromium.launch()
-    page = browser.new_page()
+@pytest.mark.parametrize("username, password, expected_url", [
+    ("standard_user", "secret_sauce", "https://www.saucedemo.com/v1/inventory.html")
+])
+def test_login(page: Page, username, password, expected_url):
     page.goto("https://www.saucedemo.com/v1/")
-    page.locator('#user-name').fill("standard_user")
-    page.locator("#password").fill("secret_sauce")
+    page.locator('#user-name').fill(username)
+    page.locator("#password").fill(password)
     page.locator("#login-button").click()
-    assert page.url == "https://www.saucedemo.com/v1/inventory.html", "Login failed or URL did not match expected dashboard URL"
-
-
-with sync_playwright() as playwright:
-    test_login(playwright)
+    assert page.url == expected_url, "Login failed or URL did not match expected dashboard URL"
