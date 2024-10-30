@@ -1,6 +1,20 @@
+"""
+Module containing the LoginPage class for the Sauce Demo application.
+"""
 from playwright.sync_api import Page
 
+
 class LoginPage:
+    """
+    Page Object for the Sauce Demo login page.
+
+    Attributes:
+        page (Page): The Playwright Page object to interact with the browser.
+        username_locator (str): The locator for the username input field.
+        password_locator (str): The locator for the password input field.
+        login_button_locator (str): The locator for the login button.
+    """
+
     def __init__(self, page: Page):
         self.page = page
         self.username_locator = '#user-name'
@@ -18,4 +32,3 @@ class LoginPage:
 
     def click_login(self):
         self.page.locator(self.login_button_locator).click()
-
