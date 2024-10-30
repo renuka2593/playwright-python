@@ -1,4 +1,5 @@
 # playwright-python
+[![Pylint](https://github.com/renuka2593/playwright-python/actions/workflows/pylint.yml/badge.svg)](https://github.com/renuka2593/playwright-python/actions/workflows/pylint.yml)
 
 ## Installation and Setup 
 
