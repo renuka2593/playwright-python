@@ -1,0 +1,2 @@
+[MESSAGES CONTROL]
+disable=C0114,C0115  # Ignore missing module and class docstrings
