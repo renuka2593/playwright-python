@@ -29,4 +29,6 @@ def test_should_get_locked_error_msg(page: Page, username, password, expected_ti
     page_manager.login_page.fill_password(password)
     page_manager.login_page.click_login()
     expect(page).to_have_title(re.compile(expected_title))
-    expect(page_manager.login_page.get_error_msg()).to_contain_text("Sorry, this user has been locked out.")
+    expect(
+        page_manager.login_page.get_error_msg()
+    ).to_contain_text("Sorry, this user has been locked out.")
