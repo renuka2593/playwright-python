@@ -20,6 +20,7 @@ class LoginPage:
         self.username_locator = '#user-name'
         self.password_locator = '#password'
         self.login_button_locator = '#login-button'
+        self.error_msg_txt = "Sorry, this user has been locked out."
 
     def go_to(self):
         self.page.goto("https://www.saucedemo.com/v1/")
@@ -32,3 +33,6 @@ class LoginPage:
 
     def click_login(self):
         self.page.locator(self.login_button_locator).click()
+
+    def get_error_msg(self):
+        return self.page.get_by_text(self.error_msg_txt)
