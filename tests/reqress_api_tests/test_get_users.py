@@ -9,7 +9,7 @@ HEADERS = {
 
 
 @pytest.fixture(scope="session")
-def api_request_context(playwright: Playwright) -> APIRequestContext:
+def reqres_api_request_context(playwright: Playwright) -> APIRequestContext:
     """Fixture to create a new APIRequestContext with predefined headers and base URL."""
     request_context = playwright.request.new_context(
         base_url=BASE_URL,
