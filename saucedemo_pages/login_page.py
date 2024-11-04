@@ -25,6 +25,11 @@ class LoginPage:
     def go_to(self):
         self.page.goto("https://www.saucedemo.com/v1/")
 
+    def login_as_standard_user(self, username: str, password: str):
+        self.fill_username(username)
+        self.fill_password(password)
+        self.click_login()
+
     def fill_username(self, username: str):
         self.page.locator(self.username_locator).fill(username)
 
