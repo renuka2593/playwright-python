@@ -37,3 +37,5 @@ pytest test_login.py
 * Playwright
 * Pytest
 * PyCharm or Any IDE
+
+## Notes 

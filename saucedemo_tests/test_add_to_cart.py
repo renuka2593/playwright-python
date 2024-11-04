@@ -6,9 +6,11 @@ from playwright.sync_api import Page, expect
 from saucedemo_pages.page_manager import PageManager
 
 
-@pytest.mark.parametrize("username, password, product_to_add, expected_url", [
-    ("standard_user", "secret_sauce", "Sauce Labs Onesie", "https://www.saucedemo.com/v1/inventory.html")
-])
+@pytest.mark.parametrize("username, password, product_to_add, expected_url",
+                         [
+                             ("standard_user", "secret_sauce", "Sauce Labs Onesie",
+                              "https://www.saucedemo.com/v1/inventory.html")
+                         ])
 def test_add_to_cart(page: Page, username, password, product_to_add, expected_url):
     page_manager = PageManager(page)
     page_manager.login_page.go_to()
