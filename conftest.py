@@ -1,6 +1,7 @@
 import pytest
 import json
 import re
+from playwright.sync_api import Playwright, APIRequestContext
 
 @pytest.fixture
 def get_data(request):
@@ -17,3 +18,19 @@ def get_data(request):
         return data[base_test_name][0]
     else:
         pytest.fail(f"No test data found for test function: {test_name}")
+
+BASE_URL = "https://reqres.in"
+HEADERS = {
+    "Accept": "application/json"
+}
+
+
+@pytest.fixture(scope="session")
+def api_request_context(playwright: Playwright) -> APIRequestContext:
+    """Fixture to create a new APIRequestContext with predefined headers and base URL."""
+    request_context = playwright.request.new_context(
+        base_url=BASE_URL,
+        extra_http_headers=HEADERS,
+    )
+    yield request_context
+    request_context.dispose()
