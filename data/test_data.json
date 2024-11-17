@@ -1,0 +1,10 @@
+{
+  "test_add_to_cart": [
+    {
+      "username": "standard_user",
+      "password": "secret_sauce",
+      "product_to_add": "Sauce Labs Onesie",
+      "expected_url": "https://www.saucedemo.com/v1/inventory.html"
+    }
+  ]
+}
